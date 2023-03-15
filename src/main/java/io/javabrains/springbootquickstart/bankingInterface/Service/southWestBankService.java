@@ -7,12 +7,23 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 import java.util.List;
 
-public class southWestBankService {
+public interface southWestBankService {
 
-    @Autowired
-    private southWestBankRepository swbRepository;
+    //@Autowired
+    //private southWestBankRepository swbRepository;
 
-    public List<southWestBankModel> getAccountDetails(){
-        return swbRepository.findAll();
-    }
+    //Dynamic Data
+//    public List<southWestBankModel> getAccountDetails(){
+//        return swbRepository.findAll();
+//    }
+
+    //Static Dataset
+
+    public List<southWestBankModel> getAccountDetails();
+
+    public List<southWestBankModel> createAccount();
+
+    public List<southWestBankModel> updateAccount();
+
+    public List<southWestBankModel> deleteAccount();
 }
