@@ -1,13 +1,74 @@
 package io.javabrains.springbootquickstart.bankingInterface.Service;
 import io.javabrains.springbootquickstart.bankingInterface.Model.southWestBankModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import io.javabrains.springbootquickstart.bankingInterface.Repository.southWestBankRepository;
+import io.javabrains.springbootquickstart.bankingInterface.Service.southWestBankService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+//@Service
+//public class southWestBankImpl extends southWestBankService {
+//
+//
+//    private southWestBankRepository swbRepository;
+
+////////////////////////////////////////////DYNAMIC CODE BELOW////////////////////////////////////////////////////////
+//    public southWestBankImpl(southWestBankRepository swbRepository) {
+//        super();
+//        this.swbRepository = swbRepository;
+//    }
+//    @Override
+//    public List<southWestBankModel> getAccountDetails(southWestBankModel swbModel) {
+//        return swbRepository.save(swbModel);
+//    }
+//
+//    @Override
+//    public List<southWestBankModel> getAccountDetailsNew() {
+//        return swbRepository.findAll();
+//
+//
+//    }
+//
+//
+//    @Override
+//    public void deleteAccount(int clId) {
+//        swbRepository.findById(clId);
+//        swbRepository.deleteById(clId);
+//
+//    }
+//    @Override
+//    public southWestBankModel updateAccount(int clId, southWestBankModel swbModel1) {
+//        Optional<southWestBankModel> swbModel = swbRepository.findById(clId);
+//
+//            swbModel.get().setAccount_Number(swbModel1.getAccount_Number());
+//            swbModel.get().setAccount_Holder_Name(swbModel1.getAccount_Holder_Name());
+//            swbModel.get().setBalance(swbModel1.getBalance());
+//            return swbRepository.save(swbModel.get());
+//
+//
+//    }
+//    @Override
+//    public southWestBankModel createAccount(int clId) {
+//        Optional<southWestBankModel> swbModel = swbRepository.findById(clId);
+//
+//            return swbRepository.getById(clId);
+//
+//    }
+//
+//
+//}
+
+///////////////////////////////////////////////STATIC CODE BELOW////////////////////////////////////////////////
+
 @Service
 public class southWestBankImpl implements southWestBankService {
 
-    private static List<southWestBankModel> list = new ArrayList<>();
+    @Autowired
+    private southWestBankRepository swbRepository;
+private static List<southWestBankModel> list = new ArrayList<>();
     private static List<southWestBankModel> createlist = new ArrayList<>();
     private static List<southWestBankModel> updatelist = new ArrayList<>();
     private static List<southWestBankModel> deletelist = new ArrayList<>();
@@ -122,6 +183,12 @@ public class southWestBankImpl implements southWestBankService {
         swbModel.setAccount_Number(1003);
         swbModel.setAccount_Holder_Name("Anany Johari");
         swbModel.setBalance(23000);
+        deletelist.add(swbModel);
+
+        swbModel = new southWestBankModel();
+        swbModel.setAccount_Number(1004);
+        swbModel.setAccount_Holder_Name("Harshith Reddy");
+        swbModel.setBalance(28000);
         deletelist.add(swbModel);
     }
 
