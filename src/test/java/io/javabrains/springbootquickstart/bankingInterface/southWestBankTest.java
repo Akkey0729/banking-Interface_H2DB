@@ -24,7 +24,6 @@ public class southWestBankTest {
             swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
             swbModel.setBalance(14000);
             swbRepository.save(swbModel);
-
         }
         @Test
         public void getAccountDetailsTest() {
@@ -35,17 +34,17 @@ public class southWestBankTest {
         @Test
         public void updateSouthWestBankTest() {
             //southWestBankModel swbModel= swbRepository.findById(1).get().getAccount_Holder_Name();
-            southWestBankModel swbModel= swbRepository.findById(1).get();
+            southWestBankModel swbModel= swbRepository.findById(1L).get();
             swbModel.setAccount_Holder_Name("Anany Johari");
             swbRepository.save(swbModel);
 
-            Assertions.assertNotEquals("Anany Johari", swbRepository.findById(1).get().getAccount_Holder_Name());
+            Assertions.assertNotEquals("Anany Johari", swbRepository.findById(1L).get().getAccount_Holder_Name());
 
         }
         @Test
         public void fetchDeletedAccountTest() {
-            swbRepository.deleteById(11);
-            assertThat(swbRepository.existsById(10)).isFalse();
+            swbRepository.deleteById(11L);
+            assertThat(swbRepository.existsById(10L)).isFalse();
         }
     }
 

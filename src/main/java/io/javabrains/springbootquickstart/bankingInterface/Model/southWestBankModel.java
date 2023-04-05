@@ -1,22 +1,24 @@
 package io.javabrains.springbootquickstart.bankingInterface.Model;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Objects;
+
+@Data
 @Entity
-@Table(name = "AccountDetails")
+@AllArgsConstructor
+@NoArgsConstructor
 public class southWestBankModel {
     @Id
-    @Column( name = "Account_Number")
-    int Account_Number;
-    @Column( name = "Account_Holder_Name")
-    String Account_Holder_Name;
-    @Column( name = "Balance")
-    int Balance;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column
+    public long Account_Number;
+    @Column
+    private String Account_Holder_Name;
+    @Column
+    private long Balance;
 
 }

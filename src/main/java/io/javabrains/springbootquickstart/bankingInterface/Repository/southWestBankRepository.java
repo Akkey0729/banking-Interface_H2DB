@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface southWestBankRepository extends JpaRepository<southWestBankModel , Integer> {
+public interface southWestBankRepository extends JpaRepository<southWestBankModel , Long> {
 
 
+    //List<southWestBankModel> findByAccount_Number(long Account_Number);
 }

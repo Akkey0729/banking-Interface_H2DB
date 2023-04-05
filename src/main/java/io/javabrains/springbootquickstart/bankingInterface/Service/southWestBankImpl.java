@@ -1,28 +1,77 @@
-package io.javabrains.springbootquickstart.bankingInterface.Service;
+/*package io.javabrains.springbootquickstart.bankingInterface.Service;
 import io.javabrains.springbootquickstart.bankingInterface.Model.southWestBankModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import io.javabrains.springbootquickstart.bankingInterface.Repository.southWestBankRepository;
-import io.javabrains.springbootquickstart.bankingInterface.Service.southWestBankService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-//@Service
-//public class southWestBankImpl extends southWestBankService {
-//
-//
-//    private southWestBankRepository swbRepository;
+@Service
+public class southWestBankImpl implements southWestBankService{
 
-////////////////////////////////////////////DYNAMIC CODE BELOW////////////////////////////////////////////////////////
-//    public southWestBankImpl(southWestBankRepository swbRepository) {
-//        super();
-//        this.swbRepository = swbRepository;
-//    }
+
+    private southWestBankRepository swbRepository;
+
+//////////////////////////////////////////DYNAMIC CODE BELOW////////////////////////////////////////////////////////
+    public southWestBankImpl(southWestBankRepository swbRepository) {
+        super();
+        this.swbRepository = swbRepository;
+    }
+
+    @Override
+    public List<southWestBankModel> updateAccount(long Account_Number, southWestBankModel swbModel1) {
+    Optional<southWestBankModel> swbModel = swbRepository.findById(Account_Number);
+    List<southWestBankModel> list = new ArrayList<>();
+    swbModel.get().setAccount_Number(swbModel1.getAccount_Number());
+    swbModel.get().setAccount_Holder_Name(swbModel1.getAccount_Holder_Name());
+    swbModel.get().setBalance(swbModel1.getBalance());
+    //return swbRepository.save(swbModel.get());
+    list.add(swbModel1);
+        return list;
+}
+    @Override
+    public List<southWestBankModel> getAccountDetails(southWestBankModel swbModel) {
+        List<southWestBankModel> list = new ArrayList<>();
+
+        //southWestBankModel swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1003);
+//        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
+//        swbModel.setBalance(14500);
+//
+        swbModel.getAccount_Number();
+        swbModel.getAccount_Holder_Name();
+        swbModel.getBalance();
+        list.add(swbModel);
+//
+        return list;
+        //return swbRepository.findAll();
+    }
+
+
+    @Override
+    public List<southWestBankModel> createAccount(int clId) {
+        return null;
+    }
+
+
+
+    @Override
+    public List<southWestBankModel> deleteAccount(int clId) {
+        return null;
+    }
+
+
+    @Override
+    public southWestBankModel saveData(southWestBankModel swbModel){
+        return swbRepository.save(swbModel);
+    }
+    ///////////IMPLEMENTATION REFERENCE///////////
 //    @Override
 //    public List<southWestBankModel> getAccountDetails(southWestBankModel swbModel) {
-//        return swbRepository.save(swbModel);
+//
+//        return Collections.singletonList(swbRepository.save(swbModel));
 //    }
 //
 //    @Override
@@ -58,157 +107,163 @@ import java.util.Optional;
 //
 //    }
 //
-//
-//}
+
+
+
+
+
+}
 
 ///////////////////////////////////////////////STATIC CODE BELOW////////////////////////////////////////////////
+//
+//@Service
+//public class southWestBankImpl implements southWestBankService {
+//
+//    @Autowired
+//    private southWestBankRepository swbRepository;
+//private static List<southWestBankModel> list = new ArrayList<>();
+//    private static List<southWestBankModel> createlist = new ArrayList<>();
+//    private static List<southWestBankModel> updatelist = new ArrayList<>();
+//    private static List<southWestBankModel> deletelist = new ArrayList<>();
+//
+//    static{
+//        southWestBankModel swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1001);
+//        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
+//        swbModel.setBalance(15000);
+//        list.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1002);
+//        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
+//        swbModel.setBalance(35000);
+//        list.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1003);
+//        swbModel.setAccount_Holder_Name("Anany Johari");
+//        swbModel.setBalance(25000);
+//        list.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1004);
+//        swbModel.setAccount_Holder_Name("Harshith Reddy");
+//        swbModel.setBalance(20000);
+//        list.add(swbModel);
+//    }
+//
+//    static{
+//
+//        southWestBankModel swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1001);
+//        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
+//        swbModel.setBalance(15000);
+//        createlist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1002);
+//        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
+//        swbModel.setBalance(35000);
+//        createlist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1003);
+//        swbModel.setAccount_Holder_Name("Anany Johari");
+//        swbModel.setBalance(25000);
+//        createlist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1004);
+//        swbModel.setAccount_Holder_Name("Harshith Reddy");
+//        swbModel.setBalance(20000);
+//        createlist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1005);
+//        swbModel.setAccount_Holder_Name("Ankeet Choudhary");
+//        swbModel.setBalance(27000);
+//        createlist.add(swbModel);
+//    }
+//
+//    static{
+//
+//        southWestBankModel swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1001);
+//        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
+//        swbModel.setBalance(15000);
+//        updatelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1002);
+//        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
+//        swbModel.setBalance(38000);
+//        updatelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1003);
+//        swbModel.setAccount_Holder_Name("Anany Johari");
+//        swbModel.setBalance(23000);
+//        updatelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1004);
+//        swbModel.setAccount_Holder_Name("Harshith Reddy");
+//        swbModel.setBalance(28000);
+//        updatelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1005);
+//        swbModel.setAccount_Holder_Name("Ankeet Choudhary");
+//        swbModel.setBalance(29000);
+//        updatelist.add(swbModel);
+//    }
+//
+//    static {
+//
+//        southWestBankModel swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1001);
+//        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
+//        swbModel.setBalance(15000);
+//        deletelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1002);
+//        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
+//        swbModel.setBalance(38000);
+//        deletelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1003);
+//        swbModel.setAccount_Holder_Name("Anany Johari");
+//        swbModel.setBalance(23000);
+//        deletelist.add(swbModel);
+//
+//        swbModel = new southWestBankModel();
+//        swbModel.setAccount_Number(1004);
+//        swbModel.setAccount_Holder_Name("Harshith Reddy");
+//        swbModel.setBalance(28000);
+//        deletelist.add(swbModel);
+//    }
+//
+//        @Override
+//    public List<southWestBankModel> getAccountDetails(){
+//        return list;
+//    }
+//
+//    @Override
+//    public List<southWestBankModel> createAccount(){
+//        return createlist;
+//    }
+//
+//    @Override
+//    public List<southWestBankModel> updateAccount(){
+//        return updatelist;
+//    }
+//
+//    @Override
+//    public List<southWestBankModel> deleteAccount(){
+//        return deletelist;
+//    }
+//}
 
-@Service
-public class southWestBankImpl implements southWestBankService {
-
-    @Autowired
-    private southWestBankRepository swbRepository;
-private static List<southWestBankModel> list = new ArrayList<>();
-    private static List<southWestBankModel> createlist = new ArrayList<>();
-    private static List<southWestBankModel> updatelist = new ArrayList<>();
-    private static List<southWestBankModel> deletelist = new ArrayList<>();
-
-    static{
-        southWestBankModel swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1001);
-        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
-        swbModel.setBalance(15000);
-        list.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1002);
-        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
-        swbModel.setBalance(35000);
-        list.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1003);
-        swbModel.setAccount_Holder_Name("Anany Johari");
-        swbModel.setBalance(25000);
-        list.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1004);
-        swbModel.setAccount_Holder_Name("Harshith Reddy");
-        swbModel.setBalance(20000);
-        list.add(swbModel);
-    }
-
-    static{
-
-        southWestBankModel swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1001);
-        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
-        swbModel.setBalance(15000);
-        createlist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1002);
-        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
-        swbModel.setBalance(35000);
-        createlist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1003);
-        swbModel.setAccount_Holder_Name("Anany Johari");
-        swbModel.setBalance(25000);
-        createlist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1004);
-        swbModel.setAccount_Holder_Name("Harshith Reddy");
-        swbModel.setBalance(20000);
-        createlist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1005);
-        swbModel.setAccount_Holder_Name("Ankeet Choudhary");
-        swbModel.setBalance(27000);
-        createlist.add(swbModel);
-    }
-
-    static{
-
-        southWestBankModel swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1001);
-        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
-        swbModel.setBalance(15000);
-        updatelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1002);
-        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
-        swbModel.setBalance(38000);
-        updatelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1003);
-        swbModel.setAccount_Holder_Name("Anany Johari");
-        swbModel.setBalance(23000);
-        updatelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1004);
-        swbModel.setAccount_Holder_Name("Harshith Reddy");
-        swbModel.setBalance(28000);
-        updatelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1005);
-        swbModel.setAccount_Holder_Name("Ankeet Choudhary");
-        swbModel.setBalance(29000);
-        updatelist.add(swbModel);
-    }
-
-    static {
-
-        southWestBankModel swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1001);
-        swbModel.setAccount_Holder_Name("Akshay Kumar Gupta");
-        swbModel.setBalance(15000);
-        deletelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1002);
-        swbModel.setAccount_Holder_Name("Ashraiy Manohar");
-        swbModel.setBalance(38000);
-        deletelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1003);
-        swbModel.setAccount_Holder_Name("Anany Johari");
-        swbModel.setBalance(23000);
-        deletelist.add(swbModel);
-
-        swbModel = new southWestBankModel();
-        swbModel.setAccount_Number(1004);
-        swbModel.setAccount_Holder_Name("Harshith Reddy");
-        swbModel.setBalance(28000);
-        deletelist.add(swbModel);
-    }
-
-        @Override
-    public List<southWestBankModel> getAccountDetails(){
-        return list;
-    }
-
-    @Override
-    public List<southWestBankModel> createAccount(){
-        return createlist;
-    }
-
-    @Override
-    public List<southWestBankModel> updateAccount(){
-        return updatelist;
-    }
-
-    @Override
-    public List<southWestBankModel> deleteAccount(){
-        return deletelist;
-    }
-}
+ */
